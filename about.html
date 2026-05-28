@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — OrqFlux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#ffffff;--surface:#f5f4f0;--surface2:#eeece6;--ink:#0d0d0b;--ink2:#52514c;--ink3:#a09d94;--border:#e4e1d8;--border2:#cec9bc;--a1:#1c1f6e;--a1-mid:#3b40a8;--a1-light:#ecedfb;--a2:#c94a1a;--a2-light:#fdf0eb;--a3:#0e6655;--a3-light:#e6f3f0;--r:12px;--font-head:'Instrument Serif',serif;--font-body:'Geist',sans-serif;--font-mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.03em}
+.logo-mark{width:28px;height:28px;background:var(--a1);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;color:var(--ink2);text-decoration:none;transition:color .12s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{background:var(--ink);color:white;font-size:14px;font-weight:500;padding:8px 20px;border-radius:50px;text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:.85}
+.section{max-width:1080px;margin:0 auto;padding:80px 32px}
+.section-sm{max-width:760px;margin:0 auto;padding:80px 32px}
+h1{font-family:var(--font-head);font-size:clamp(40px,5.5vw,64px);font-weight:400;line-height:1.08;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--a1-mid)}
+h2{font-family:var(--font-head);font-size:clamp(26px,3.5vw,42px);font-weight:400;line-height:1.15;letter-spacing:-.02em}
+h2 em{font-style:italic;color:var(--a1-mid)}
+h3{font-family:var(--font-head);font-size:22px;font-weight:400;line-height:1.2}
+.lead{font-size:17px;font-weight:300;color:var(--ink2);line-height:1.7;margin-top:16px}
+.section-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--a1-mid);background:var(--a1-light);border-radius:50px;padding:5px 14px;margin-bottom:18px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+/* Hero */
+.about-hero{padding:80px 32px 64px;max-width:1080px;margin:0 auto}
+.about-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:56px}
+.about-hero-stat{border-left:3px solid var(--a1-light);padding-left:20px;margin-bottom:32px}
+.about-hero-stat .num{font-family:var(--font-head);font-size:48px;font-weight:400;color:var(--a1);line-height:1}
+.about-hero-stat .num em{font-style:italic;color:var(--a1-mid)}
+.about-hero-stat .lbl{font-size:14px;color:var(--ink2);margin-top:4px;font-weight:300}
+/* Story */
+.story-block p{font-size:16px;color:var(--ink2);line-height:1.8;margin-bottom:20px}
+.story-block p:last-child{margin-bottom:0}
+/* Mission box */
+.mission-box{background:var(--a1);border-radius:var(--r);padding:40px;margin:48px 0}
+.mission-box p{font-family:var(--font-head);font-size:clamp(22px,2.5vw,32px);font-weight:400;color:white;line-height:1.3;font-style:italic}
+/* Values */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:40px}
+.value-card{background:var(--bg);padding:28px 24px}
+.value-card:hover{background:var(--surface)}
+.value-num{font-family:var(--font-mono);font-size:11px;color:var(--ink3);margin-bottom:12px;letter-spacing:.04em}
+.value-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:7px}
+.value-desc{font-size:13px;color:var(--ink2);line-height:1.6}
+/* Team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px}
+.team-av{width:56px;height:56px;border-radius:50%;background:var(--a1);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:white;margin-bottom:16px;font-family:var(--font-head)}
+.team-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.team-role{font-size:13px;color:var(--a1-mid);margin-bottom:10px}
+.team-bio{font-size:13px;color:var(--ink2);line-height:1.6}
+/* Footer */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px 28px}
+.foot-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-brand p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.6;max-width:270px}
+.foot-col h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:var(--ink2);text-decoration:none;margin-bottom:8px;transition:color .12s}
+.foot-col a:hover{color:var(--ink)}
+.foot-bottom{max-width:1080px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+@media(max-width:800px){.about-hero-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.foot-inner{grid-template-columns:1fr 1fr}nav .nav-links{display:none}}
+@media(max-width:500px){.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+  <div class="nav-links">
+    <a href="index.html#journeys">Journeys</a>
+    <a href="index.html#analytics">Analytics</a>
+    <a href="index.html#integrations">Integrations</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+  <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="nav-cta">Book a demo &rarr;</a>
+</nav>
+
+<div class="about-hero">
+  <div class="section-badge">About OrqFlux</div>
+  <h1>We believe every business process deserves its own <em>AI agent.</em></h1>
+  <p class="lead" style="max-width:600px">OrqFlux was founded to close the gap between what AI can do and what businesses actually experience day to day. Most business interactions still run on WhatsApp chains, spreadsheets, and phone calls. We are changing that.</p>
+  <div class="about-hero-grid">
+    <div>
+      <div class="about-hero-stat"><div class="num">38<em>s</em></div><div class="lbl">average order confirmation time across live deployments</div></div>
+      <div class="about-hero-stat"><div class="num">6</div><div class="lbl">production-ready agent journeys, deployable in two weeks</div></div>
+      <div class="about-hero-stat"><div class="num">&lt;1<em>%</em></div><div class="lbl">escalation rate — agents handle the rest autonomously</div></div>
+    </div>
+    <div class="story-block">
+      <p>We started OrqFlux after watching capable businesses lose hours every day to the friction of operations — sales teams manually relaying orders over WhatsApp, finance teams assembling audit bundles by hand, operations managers chasing down tracking numbers.</p>
+      <p>The technology to fix this existed. What was missing was the right layer to connect it — a platform that could take a business process, wrap it in an intelligent agent, and make that agent reachable from whatever messaging platform the customer already uses.</p>
+      <p>That is what OrqFlux is. Not an AI chatbot. Not another CRM. A platform that turns critical business journeys into deployable, analytics-tracked AI agent journeys — and gets businesses live in days, not months.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div class="section-sm" style="padding-top:64px;padding-bottom:64px">
+  <div class="mission-box">
+    <p>"Every business operation that involves a customer or process interaction can be AI-transformed. We are building the platform that makes that true for any business, on any stack, in any market."</p>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div class="section" style="padding-top:64px;padding-bottom:64px">
+  <div class="section-badge">Values</div>
+  <h2>How we work.</h2>
+  <style>.vb{display:inline-flex;align-items:center;border-radius:20px;padding:5px 12px;margin-bottom:12px;font-size:11.5px;font-weight:500}.vb-i{background:#ecedfb;color:#3b40a8}.vb-a{background:#fff4e6;color:#92500a}.vb-t{background:#e6f3f0;color:#0e6655}</style>
+  <div class="values-grid">
+    <div class="value-card"><div class="vb vb-t">Fast to value</div><div class="value-title">Time to first result</div><div class="value-desc">Businesses should see results in days. We optimise for time-to-first-value above everything else in how we build and deploy.</div></div>
+    <div class="value-card"><div class="vb vb-a">Reliability first</div><div class="value-title">Reliability over features</div><div class="value-desc">A workflow that fails is worse than no workflow. We build SLA monitoring, escalation handling, and circuit breakers before new features.</div></div>
+    <div class="value-card"><div class="vb vb-i">Any channel</div><div class="value-title">Channel agnostic</div><div class="value-desc">We don't pick favourites. Your customer might be on WhatsApp today and Telegram tomorrow. The agent works the same on both.</div></div>
+    <div class="value-card"><div class="vb vb-t">No black boxes</div><div class="value-title">Transparent intelligence</div><div class="value-desc">The agent explains what it's doing, logs every action, and surfaces data the operator can act on.</div></div>
+    <div class="value-card"><div class="vb vb-a">Escalate smartly</div><div class="value-title">Human escalation is a feature</div><div class="value-desc">We design escalation into every journey. Knowing when to hand off to a human is as important as knowing when to act autonomously.</div></div>
+    <div class="value-card"><div class="vb vb-i">Global by default</div><div class="value-title">Built for the world</div><div class="value-desc">Every design decision — currencies, tax rules, logistics APIs, language support — is made with a global operator in mind.</div></div>
+  </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div class="section" style="padding-top:64px;padding-bottom:80px">
+  <div class="section-badge">Team</div>
+  <h2>The people building OrqFlux.</h2>
+  <p style="font-size:15px;color:var(--ink2);margin-top:14px;max-width:500px">A small team with deep backgrounds in distributed systems, enterprise software, and operations automation.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-av">AK</div>
+      <div class="team-name">Arjun Kumar</div>
+      <div class="team-role">CEO &amp; Co-founder</div>
+      <div class="team-bio">Former engineering lead at a global B2B marketplace. Spent 8 years watching business operations fail at the integration layer. Building OrqFlux to fix it.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-av" style="background:var(--a3)">SR</div>
+      <div class="team-name">Sneha Rao</div>
+      <div class="team-role">CTO &amp; Co-founder</div>
+      <div class="team-bio">Distributed systems engineer with previous roles at a logistics infrastructure company. Designed the agent execution and session persistence layer at OrqFlux.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-av" style="background:var(--a2)">DM</div>
+      <div class="team-name">David Mensah</div>
+      <div class="team-role">Head of Product</div>
+      <div class="team-bio">Product lead across SaaS and operations tooling for 10 years. Leads journey design, analytics dashboard, and the escalation engine at OrqFlux.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-av" style="background:#5a3494)">PT</div>
+      <div class="team-name">Priya Thakur</div>
+      <div class="team-role">Head of Integrations</div>
+      <div class="team-bio">Built ERP and WMS adapters across 12 enterprise clients. Runs the integration bus and partner connector programme at OrqFlux.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-av" style="background:#0e5a6e">LW</div>
+      <div class="team-name">Lars Weber</div>
+      <div class="team-role">Head of Sales, EMEA</div>
+      <div class="team-bio">10 years in enterprise SaaS sales across Europe and the Middle East. Leads go-to-market for wholesale and logistics verticals.</div>
+    </div>
+    <div class="team-card" style="background:var(--surface);border:1px dashed var(--border2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;min-height:160px">
+      <div style="font-size:14px;font-weight:500;color:var(--ink2)">We're hiring</div>
+      <div style="font-size:13px;color:var(--ink3);text-align:center;max-width:180px">See open roles and join the team</div>
+      <a href="careers.html" style="font-size:13px;color:var(--a1-mid);text-decoration:none;margin-top:4px">View careers &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="index.html" class="nav-logo" style="color:var(--ink)"><div class="logo-mark"><svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+      <p>AI agents that run your business operations, over any channel.</p>
+    </div>
+    <div class="foot-col"><h4>Product</h4><a href="index.html#journeys">Journeys</a><a href="index.html#analytics">Analytics</a><a href="index.html#integrations">Integrations</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>&copy; 2026 OrqFlux. All rights reserved.</span><span>Built for AI-transforming businesses worldwide.</span></div>
+</footer>
+</body>
+</html>

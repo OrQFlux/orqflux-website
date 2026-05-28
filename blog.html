@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog — OrqFlux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#ffffff;--surface:#f5f4f0;--surface2:#eeece6;--ink:#0d0d0b;--ink2:#52514c;--ink3:#a09d94;--border:#e4e1d8;--border2:#cec9bc;--a1:#1c1f6e;--a1-mid:#3b40a8;--a1-light:#ecedfb;--a2:#c94a1a;--a2-light:#fdf0eb;--a3:#0e6655;--a3-light:#e6f3f0;--r:12px;--font-head:'Instrument Serif',serif;--font-body:'Geist',sans-serif;--font-mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.03em}
+.logo-mark{width:28px;height:28px;background:var(--a1);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;color:var(--ink2);text-decoration:none;transition:color .12s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{background:var(--ink);color:white;font-size:14px;font-weight:500;padding:8px 20px;border-radius:50px;text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:.85}
+h1{font-family:var(--font-head);font-size:clamp(38px,5vw,60px);font-weight:400;line-height:1.08;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--a1-mid)}
+h2{font-family:var(--font-head);font-size:clamp(22px,2.8vw,32px);font-weight:400;line-height:1.2;letter-spacing:-.01em}
+h2 em{font-style:italic;color:var(--a1-mid)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--a1-mid);background:var(--a1-light);border-radius:50px;padding:5px 14px;margin-bottom:18px}
+.page-hero{max-width:1080px;margin:0 auto;padding:72px 32px 56px}
+.blog-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px}
+.filter-btn{padding:6px 16px;border-radius:50px;border:1px solid var(--border);font-size:13px;cursor:pointer;background:none;color:var(--ink2);font-family:var(--font-body);transition:all .15s}
+.filter-btn.active,.filter-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.blog-grid{max-width:1080px;margin:0 auto;padding:0 32px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post-card{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--bg);transition:border-color .18s,box-shadow .18s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.post-card:hover{border-color:var(--border2);box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.post-card.featured{grid-column:span 2}
+.post-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:clamp(28px,3vw,40px);font-style:italic;color:white;padding:24px}
+.post-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column}
+.post-category{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.post-title{font-family:var(--font-head);font-size:20px;font-weight:400;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+.post-card.featured .post-title{font-size:26px}
+.post-excerpt{font-size:13px;color:var(--ink2);line-height:1.6;flex:1;margin-bottom:16px}
+.post-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--ink3)}
+.post-author{display:flex;align-items:center;gap:7px}
+.post-av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;flex-shrink:0}
+.newsletter{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 32px;text-align:center}
+.newsletter-inner{max-width:480px;margin:0 auto}
+.nl-form{display:flex;gap:8px;margin-top:20px;max-width:400px;margin-left:auto;margin-right:auto}
+.nl-input{flex:1;padding:10px 16px;border:1px solid var(--border2);border-radius:50px;font-size:14px;font-family:var(--font-body);background:white;color:var(--ink);outline:none}
+.nl-input:focus{border-color:var(--a1-mid)}
+.nl-btn{background:var(--ink);color:white;border:none;border-radius:50px;padding:10px 22px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-body);white-space:nowrap}
+.nl-btn:hover{opacity:.85}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px 28px}
+.foot-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-brand p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.6;max-width:270px}
+.foot-col h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:var(--ink2);text-decoration:none;margin-bottom:8px;transition:color .12s}
+.foot-col a:hover{color:var(--ink)}
+.foot-bottom{max-width:1080px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+@media(max-width:800px){.blog-grid{grid-template-columns:1fr}.post-card.featured{grid-column:span 1}.foot-inner{grid-template-columns:1fr 1fr}nav .nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+  <div class="nav-links">
+    <a href="index.html#journeys">Journeys</a>
+    <a href="index.html#analytics">Analytics</a>
+    <a href="about.html">About</a>
+    <a href="blog.html" class="active">Blog</a>
+  </div>
+  <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="nav-cta">Book a demo &rarr;</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-badge">Blog</div>
+  <h1>Thinking on <em>AI operations.</em></h1>
+  <p style="font-size:17px;font-weight:300;color:var(--ink2);margin-top:16px;max-width:520px">Guides, case studies, and product thinking from the OrqFlux team on building AI agents for business operations.</p>
+  <div class="blog-filters">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Product</button>
+    <button class="filter-btn">Case studies</button>
+    <button class="filter-btn">Engineering</button>
+    <button class="filter-btn">AI in operations</button>
+  </div>
+</div>
+
+<div class="blog-grid">
+  <!-- Featured -->
+  <a href="#" class="post-card featured">
+    <div class="post-thumb" style="background:var(--a1);height:220px">The anatomy of an agent journey</div>
+    <div class="post-body">
+      <div class="post-category" style="color:var(--a1-mid)">Product</div>
+      <h2>The anatomy of an <em>agent journey</em></h2>
+      <p class="post-excerpt">What makes an agentic workflow different from a chatbot or a rule-based automation? We break down the six components that every production-grade agent journey needs — from session memory and tool calls to SLA timers and escalation logic.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:var(--a1)">AK</div>Arjun Kumar</div>
+        <span>14 Apr 2026 &middot; 8 min</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="post-card">
+    <div class="post-thumb" style="background:var(--a3);font-size:20px">38 seconds vs 4 hours</div>
+    <div class="post-body">
+      <div class="post-category" style="color:var(--a3)">Case study</div>
+      <h2>From 4 hours to 38 seconds</h2>
+      <p class="post-excerpt">How a regional FMCG distributor deployed the order fulfilment agent journey and reduced average order-to-confirm time by 83%.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:var(--a3)">DM</div>David Mensah</div>
+        <span>9 Apr 2026 &middot; 6 min</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="post-card">
+    <div class="post-thumb" style="background:#3b2d8a;font-size:18px">Why WhatsApp is not enough</div>
+    <div class="post-body">
+      <div class="post-category" style="color:#3b2d8a">AI in operations</div>
+      <h2>Why WhatsApp is not enough</h2>
+      <p class="post-excerpt">Most B2B businesses have already moved their buyers to messaging platforms. The next step is making those conversations intelligent — and that requires more than a chatbot.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:#3b2d8a">SR</div>Sneha Rao</div>
+        <span>3 Apr 2026 &middot; 5 min</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="post-card">
+    <div class="post-thumb" style="background:#8a4e00;font-size:18px">Designing the escalation engine</div>
+    <div class="post-body">
+      <div class="post-category" style="color:#8a4e00">Engineering</div>
+      <h2>Designing the escalation engine</h2>
+      <p class="post-excerpt">The most important part of an agentic workflow is knowing when not to act. Inside the confidence scoring, SLA timers, and circuit breakers that keep OrqFlux reliable at scale.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:#8a4e00">SR</div>Sneha Rao</div>
+        <span>28 Mar 2026 &middot; 10 min</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="post-card">
+    <div class="post-thumb" style="background:var(--a2);font-size:18px">Multi-channel session memory</div>
+    <div class="post-body">
+      <div class="post-category" style="color:var(--a2)">Engineering</div>
+      <h2>Multi-channel session memory</h2>
+      <p class="post-excerpt">When a buyer starts a conversation on WhatsApp and continues on Telegram, the agent should not lose context. How we built cross-channel session continuity into OrqFlux.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:var(--a2)">PT</div>Priya Thakur</div>
+        <span>20 Mar 2026 &middot; 7 min</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="post-card">
+    <div class="post-thumb" style="background:#0e5a6e;font-size:18px">AI adoption in 2 weeks</div>
+    <div class="post-body">
+      <div class="post-category" style="color:#0e5a6e">Product</div>
+      <h2>Fast AI adoption: what two weeks actually looks like</h2>
+      <p class="post-excerpt">We say "live in two weeks" a lot. Here is exactly what weeks one and two look like — integration milestones, configuration checkpoints, and what makes deployments go faster.</p>
+      <div class="post-meta">
+        <div class="post-author"><div class="post-av" style="background:#0e5a6e">DM</div>David Mensah</div>
+        <span>12 Mar 2026 &middot; 5 min</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="newsletter">
+  <div class="newsletter-inner">
+    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400">Get new posts <em>in your inbox.</em></h2>
+    <p style="font-size:14px;color:var(--ink2);margin-top:8px">Short, practical writing on AI operations. No filler.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="your@email.com"/>
+      <button class="nl-btn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand"><a href="index.html" class="nav-logo" style="color:var(--ink)"><div class="logo-mark"><svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a><p>AI agents that run your business operations, over any channel.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="index.html#journeys">Journeys</a><a href="index.html#analytics">Analytics</a><a href="index.html#integrations">Integrations</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>&copy; 2026 OrqFlux. All rights reserved.</span><span>Built for AI-transforming businesses worldwide.</span></div>
+</footer>
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

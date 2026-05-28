@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — OrqFlux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#fff;--surface:#f5f4f0;--ink:#0d0d0b;--ink2:#52514c;--ink3:#a09d94;--border:#e4e1d8;--border2:#cec9bc;--a1:#1c1f6e;--a1-mid:#3b40a8;--a1-light:#ecedfb;--a3:#0e6655;--a3-light:#e6f3f0;--r:12px;--font-head:'Instrument Serif',serif;--font-body:'Geist',sans-serif;--font-mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.03em}
+.logo-mark{width:28px;height:28px;background:var(--a1);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
+.nav-links{display:flex;gap:28px}.nav-links a{font-size:14px;color:var(--ink2);text-decoration:none;transition:color .12s}.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{background:var(--ink);color:white;font-size:14px;font-weight:500;padding:8px 20px;border-radius:50px;text-decoration:none;transition:opacity .15s}.nav-cta:hover{opacity:.85}
+
+/* Page */
+.contact-page{min-height:calc(100vh - 58px);display:flex;flex-direction:column}
+.contact-main{flex:1;max-width:680px;margin:0 auto;width:100%;padding:72px 32px 80px}
+.section-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--a1-mid);background:var(--a1-light);border-radius:50px;padding:5px 14px;margin-bottom:20px}
+.contact-heading{font-family:var(--font-head);font-size:clamp(32px,4vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px}
+.contact-heading em{font-style:italic;color:var(--a1-mid)}
+.contact-sub{font-size:16px;font-weight:300;color:var(--ink2);margin-bottom:40px;line-height:1.6}
+
+/* Chert-style minimal message form */
+.msg-form{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.msg-form-top{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.msg-form-field{background:var(--bg);padding:14px 18px}
+.msg-form-field label{display:block;font-size:11px;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.msg-form-field input{width:100%;border:none;outline:none;font-size:15px;font-family:var(--font-body);color:var(--ink);background:transparent;caret-color:var(--a1-mid)}
+.msg-form-field input::placeholder{color:var(--ink3)}
+.msg-divider{height:1px;background:var(--border)}
+.msg-area-wrap{padding:18px 18px 14px;background:var(--bg)}
+.msg-area-wrap label{display:block;font-size:11px;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.msg-area-wrap textarea{width:100%;border:none;outline:none;font-size:15px;font-family:var(--font-body);color:var(--ink);background:transparent;min-height:140px;resize:none;line-height:1.6;caret-color:var(--a1-mid)}
+.msg-area-wrap textarea::placeholder{color:var(--ink3)}
+.msg-form-bottom{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--border);background:var(--surface)}
+.msg-hint{font-size:12px;color:var(--ink3)}
+.msg-send{background:var(--ink);color:white;border:none;border-radius:50px;padding:9px 22px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-body);display:flex;align-items:center;gap:7px;transition:opacity .15s}
+.msg-send:hover{opacity:.85}
+.msg-send svg{width:14px;height:14px;fill:white}
+
+/* Success */
+.msg-success{display:none;text-align:center;padding:56px 32px}
+.success-ring{width:56px;height:56px;border-radius:50%;background:var(--a3-light);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.success-ring svg{width:26px;height:26px;stroke:var(--a3);fill:none;stroke-width:2.5;stroke-linecap:round}
+.msg-success h3{font-family:var(--font-head);font-size:26px;font-weight:400;margin-bottom:8px}
+.msg-success p{font-size:15px;color:var(--ink2);line-height:1.6}
+
+/* Other contact options */
+.contact-alts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.alt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;text-decoration:none;transition:border-color .15s}
+.alt-card:hover{border-color:var(--border2)}
+.alt-label{font-size:12px;font-weight:600;color:var(--ink3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
+.alt-value{font-size:14px;color:var(--ink);font-weight:500}
+.alt-desc{font-size:12px;color:var(--ink3);margin-top:2px}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px 28px}
+.foot-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-brand p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.6;max-width:270px}
+.foot-col h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:var(--ink2);text-decoration:none;margin-bottom:8px;transition:color .12s}.foot-col a:hover{color:var(--ink)}
+.foot-bottom{max-width:1080px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+@media(max-width:800px){.msg-form-top{grid-template-columns:1fr}.contact-alts{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}nav .nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+  <div class="nav-links"><a href="index.html#journeys">Journeys</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html" class="active">Contact</a></div>
+  <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="nav-cta">Book a demo &rarr;</a>
+</nav>
+
+<div class="contact-page">
+  <div class="contact-main">
+    <div class="section-badge">Get in touch</div>
+    <div class="contact-heading">Send us a <em>message.</em></div>
+    <p class="contact-sub">Questions about the product, integration help, or partnership ideas. We read and reply to every message.</p>
+
+    <!-- Message form — Chert style -->
+    <div id="form-container">
+      <div class="msg-form">
+        <div class="msg-form-top">
+          <div class="msg-form-field">
+            <label>Name</label>
+            <input type="text" id="f-name" placeholder="Your name"/>
+          </div>
+          <div class="msg-form-field">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="you@company.com"/>
+          </div>
+        </div>
+        <div class="msg-divider"></div>
+        <div class="msg-area-wrap">
+          <label>Message</label>
+          <textarea id="f-msg" placeholder="Tell us what you're working on, or ask anything…"></textarea>
+        </div>
+        <div class="msg-form-bottom">
+          <span class="msg-hint">We reply within one business day.</span>
+          <button class="msg-send" onclick="sendMsg()">
+            Send
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-alts" style="margin-top:16px">
+        <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="alt-card">
+          <div class="alt-label">Book a demo</div>
+          <div class="alt-value">Google Calendar</div>
+          <div class="alt-desc">30-min product walkthrough with Meet link</div>
+        </a>
+        <a href="mailto:hello@orqflux.io" class="alt-card">
+          <div class="alt-label">Email directly</div>
+          <div class="alt-value">hello@orqflux.io</div>
+          <div class="alt-desc">For general enquiries and partnerships</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div class="msg-success" id="form-success">
+      <div class="success-ring"><svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg></div>
+      <h3>Message sent.</h3>
+      <p>We'll be in touch within one business day.<br>You can also <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" style="color:var(--a1-mid);text-decoration:none">book a demo directly &rarr;</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand"><a href="index.html" class="nav-logo" style="color:var(--ink)"><div class="logo-mark"><svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a><p>AI agents that run your business operations, over any channel.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="index.html#journeys">Journeys</a><a href="index.html#analytics">Analytics</a><a href="index.html#integrations">Integrations</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>&copy; 2026 OrqFlux. All rights reserved.</span><span>Built for AI-transforming businesses worldwide.</span></div>
+</footer>
+
+<script>
+function sendMsg() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  if (!name || !email || !msg) {
+    document.getElementById('f-msg').focus();
+    return;
+  }
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>

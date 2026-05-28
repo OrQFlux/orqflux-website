@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Careers — OrqFlux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#fff;--surface:#f5f4f0;--ink:#0d0d0b;--ink2:#52514c;--ink3:#a09d94;--border:#e4e1d8;--border2:#cec9bc;--a1:#1c1f6e;--a1-mid:#3b40a8;--a1-light:#ecedfb;--a3:#0e6655;--a3-light:#e6f3f0;--r:12px;--font-head:'Instrument Serif',serif;--font-body:'Geist',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.03em}
+.logo-mark{width:28px;height:28px;background:var(--a1);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
+.nav-links{display:flex;gap:28px}.nav-links a{font-size:14px;color:var(--ink2);text-decoration:none;transition:color .12s}.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{background:var(--ink);color:white;font-size:14px;font-weight:500;padding:8px 20px;border-radius:50px;text-decoration:none;transition:opacity .15s}.nav-cta:hover{opacity:.85}
+h1{font-family:var(--font-head);font-size:clamp(38px,5vw,60px);font-weight:400;line-height:1.08;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--a1-mid)}
+h2{font-family:var(--font-head);font-size:clamp(24px,3vw,38px);font-weight:400;line-height:1.15;letter-spacing:-.02em}
+h2 em{font-style:italic;color:var(--a1-mid)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--a1-mid);background:var(--a1-light);border-radius:50px;padding:5px 14px;margin-bottom:18px}
+.page-hero{max-width:1080px;margin:0 auto;padding:72px 32px 64px;border-bottom:1px solid var(--border)}
+/* Perks grid — bubble style matching feat-grid */
+.perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.perk-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;transition:border-color .18s}
+.perk-card:hover{border-color:var(--border2)}
+.perk-bubble{display:inline-flex;align-items:center;gap:7px;background:var(--a1-light);border-radius:20px;padding:5px 12px;margin-bottom:14px;font-size:11.5px;color:var(--a1-mid);font-weight:500}
+.perk-bubble svg{width:12px;height:12px;stroke:var(--a1-mid);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+.perk-bubble.amber{background:#fff4e6;color:#92500a}.perk-bubble.amber svg{stroke:#92500a}
+.perk-bubble.teal{background:var(--a3-light);color:var(--a3)}.perk-bubble.teal svg{stroke:var(--a3)}
+.perk-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.perk-desc{font-size:13px;color:var(--ink2);line-height:1.6}
+/* No openings section */
+.no-openings{max-width:760px;margin:0 auto;padding:80px 32px}
+.no-openings-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px 40px;text-align:center}
+.no-openings-box h2{font-size:clamp(22px,2.5vw,32px);margin-bottom:14px}
+.no-openings-box p{font-size:15px;color:var(--ink2);max-width:440px;margin:0 auto 28px;line-height:1.7}
+.no-openings-box .divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+.no-openings-box .hint{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.btn-dark{background:var(--ink);color:white;font-size:14px;font-weight:500;padding:11px 24px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:opacity .15s}
+.btn-dark:hover{opacity:.85}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px 28px}
+.foot-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-brand p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.6;max-width:270px}
+.foot-col h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:var(--ink2);text-decoration:none;margin-bottom:8px;transition:color .12s}.foot-col a:hover{color:var(--ink)}
+.foot-bottom{max-width:1080px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+@media(max-width:800px){.perks-grid{grid-template-columns:1fr 1fr}.foot-inner{grid-template-columns:1fr 1fr}nav .nav-links{display:none}}
+@media(max-width:500px){.perks-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+  <div class="nav-links"><a href="index.html#journeys">Journeys</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html" class="active">Careers</a></div>
+  <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="nav-cta">Book a demo &rarr;</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-badge">Careers</div>
+  <h1>Build the <em>intelligent layer</em><br>for business operations.</h1>
+  <p style="font-size:17px;font-weight:300;color:var(--ink2);margin-top:16px;max-width:540px">We are a small team working on a genuinely hard problem — making AI reliable enough to run real business operations, over any channel, at any scale.</p>
+  <div class="perks-grid">
+    <div class="perk-card"><div class="perk-bubble"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5"/><path d="M4.5 7h5M9 5l2 2-2 2"/></svg>Remote-first</div><div class="perk-title">Work from anywhere</div><div class="perk-desc">We have team members across Asia, Europe, and the Middle East. Deep work is protected by default.</div></div>
+    <div class="perk-card"><div class="perk-bubble amber"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5H12l-2.8 2 1.1 3.5L7 8l-3.3 2 1.1-3.5L2 4.5h3.5z"/></svg>Early equity</div><div class="perk-title">Meaningful ownership</div><div class="perk-desc">Significant equity for everyone who joins early. Transparent cap table and straightforward compensation.</div></div>
+    <div class="perk-card"><div class="perk-bubble teal"><svg viewBox="0 0 14 14"><path d="M2 9l3-6 3 3 2-4 2 7"/></svg>Real impact</div><div class="perk-title">Ships to production fast</div><div class="perk-desc">Every feature goes into live customer deployments within weeks. No internal tools or demo environments.</div></div>
+    <div class="perk-card"><div class="perk-bubble"><svg viewBox="0 0 14 14"><path d="M2 4h10M2 7h7M2 10h5"/></svg>Async default</div><div class="perk-title">Meetings only when needed</div><div class="perk-desc">We communicate async first. Meetings are scheduled only when genuinely necessary.</div></div>
+    <div class="perk-card"><div class="perk-bubble amber"><svg viewBox="0 0 14 14"><rect x="1" y="2" width="12" height="10" rx="2"/><path d="M5 6h4M5 9h2"/></svg>Learning budget</div><div class="perk-title">$2,000 annually</div><div class="perk-desc">For courses, conferences, books, or anything that makes you better at your craft.</div></div>
+    <div class="perk-card"><div class="perk-bubble teal"><svg viewBox="0 0 14 14"><circle cx="7" cy="5" r="2.5"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>Fair pay</div><div class="perk-title">Top-quartile for your market</div><div class="perk-desc">We don't make you trade fair pay for equity or mission. Both, not a choice.</div></div>
+  </div>
+</div>
+
+<div class="no-openings">
+  <div class="no-openings-box">
+    <h2>No open roles <em>right now.</em></h2>
+    <p>We're heads-down building the core product. When we're ready to grow the team, roles will be posted here first.</p>
+    <hr class="divider"/>
+    <div class="hint">Think you'd be a great fit anyway?</div>
+    <a href="contact.html" class="btn-dark">Send us a note &rarr;</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand"><a href="index.html" class="nav-logo" style="color:var(--ink)"><div class="logo-mark"><svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a><p>AI agents that run your business operations, over any channel.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="index.html#journeys">Journeys</a><a href="index.html#analytics">Analytics</a><a href="index.html#integrations">Integrations</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>&copy; 2026 OrqFlux. All rights reserved.</span><span>Built for AI-transforming businesses worldwide.</span></div>
+</footer>
+</body>
+</html>
