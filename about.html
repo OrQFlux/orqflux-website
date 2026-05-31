@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>About — OrqFlux</title>
+<title>About | OrqFlux | AI Agents for Business Operations</title>
+<link rel="icon" type="image/png" href="logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.03em}
 .logo-mark{width:28px;height:28px;background:var(--a1);border-radius:7px;display:flex;align-items:center;justify-content:center}
 .logo-mark svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -68,11 +69,30 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 .foot-bottom{max-width:1080px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
 @media(max-width:800px){.about-hero-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.foot-inner{grid-template-columns:1fr 1fr}nav .nav-links{display:none}}
 @media(max-width:500px){.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}}
+/* ── Logo styles ── */
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit }
+.nav-logo-text { display:flex; flex-direction:column; gap:2px; }
+.nav-logo-img { display:block; mix-blend-mode:multiply; height:48px }
+.mockup-av-img{width:100%;height:100%;object-fit:contain;display:block}
+.foot-logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; margin-bottom:12px; color:inherit }
+.foot-logo-img { display:block; mix-blend-mode:multiply; flex-shrink:0; height:48px }
+.foot-logo-wordmark { display:flex; flex-direction:column; gap:1px; }
+.int-hub-logo { display:block; width:auto; height:auto; max-width:46px; max-height:46px; margin:auto; object-fit:contain; }
+.wm-orq  { font-size:18px; font-weight:700; color:#1a2d8f; letter-spacing:.02em; line-height:1; font-family:var(--font-body,'Geist',sans-serif); }
+.wm-flux { font-size:18px; font-weight:700; color:#1a6ef5; letter-spacing:.02em; line-height:1; font-family:var(--font-body,'Geist',sans-serif); }
+.wm-tag  { font-size:11px; color:var(--ink3,#a09d94); margin-top:3px; font-style:italic; }
+
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="OrqFlux" class="nav-logo-img" height="48"/>
+    <div class="nav-logo-text">
+      <span class="wm-orq">OrqFlux</span>
+      <div class="wm-tag">Orchestrate Intelligence.</div>
+    </div>
+  </a>
   <div class="nav-links">
     <a href="index.html#journeys">Journeys</a>
     <a href="index.html#analytics">Analytics</a>
@@ -173,7 +193,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <a href="index.html" class="nav-logo" style="color:var(--ink)"><div class="logo-mark"><svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="1.5" x2="9" y2="6"/><line x1="9" y1="12" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="6" y2="9"/><line x1="12" y1="9" x2="16.5" y2="9"/></svg></div>OrqFlux</a>
+      <a href="index.html" class="foot-logo-wrap">
+        <img src="logo.png" alt="OrqFlux" class="foot-logo-img" height="48"/>
+        <div class="foot-logo-wordmark">
+          <span class="wm-orq">OrqFlux</span>
+          <div class="wm-tag">Orchestrate Intelligence.</div>
+        </div>
+      </a>
       <p>AI agents that run your business operations, over any channel.</p>
     </div>
     <div class="foot-col"><h4>Product</h4><a href="index.html#journeys">Journeys</a><a href="index.html#analytics">Analytics</a><a href="index.html#integrations">Integrations</a></div>
